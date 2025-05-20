@@ -1,130 +1,134 @@
-const allStories = [
-  {
-    thumbUrl: 'img/story/cukur2.png',
-    imageUrl: 'img/story/cukur.png',
-    // title: 'Monggo yang mau cukur gratis',
-  },
-
-  {
-    thumbUrl: 'img/story/majuwa2.png',
-    imageUrl: 'img/story/majuwa.png',
-    // title: 'Hadirilah Pengajian Majuwa',
-  },
-
-  {
-    thumbUrl: 'img/story/majuwa10.png',
-    imageUrl: 'img/story/majuwa103.png',
-    // title: 'Title No. 3',
-  },
-
-  // {
-  //   thumbUrl: 'images/4-thumb.png',
-  //   imageUrl: 'images/4.png',
-  //   title: 'Title No. 4',
-  // },
-
-  // {
-  //   thumbUrl: 'images/5-thumb.png',
-  //   imageUrl: 'images/5.png',
-  //   title: 'Title No. 5',
-  // },
-
-  // {
-  //   thumbUrl: 'images/6-thumb.png',
-  //   imageUrl: 'images/6.png',
-  //   title: 'Title No. 6',
-  // },
-
-  // {
-  //   thumbUrl: 'images/7-thumb.png',
-  //   imageUrl: 'images/7.png',
-  //   title: 'Title No. 7',
-  // },
-
-  // {
-  //   thumbUrl: 'images/8-thumb.png',
-  //   imageUrl: 'images/8.png',
-  //   title: 'Title No. 8',
-  // },
-];
-
-const storiesContainer = document.querySelector('.stories-container');
-const storyFull = document.querySelector('.story-full');
-const storyFullImage = document.querySelector('.story-full img');
-const storyFullTitle = document.querySelector('.story-full .title');
-const closeBtn = document.querySelector('.story-full .close-btn');
-const leftArrow = document.querySelector('.story-full .left-arrow');
-const rightArrow = document.querySelector('.story-full .right-arrow');
-
-let currentIndex = 0;
-let timer;
-
-allStories.forEach((s, i) => {
-  const content = document.createElement('div');
-  content.classList.add('content');
-
-  const img = document.createElement('img');
-  img.setAttribute('src', s.thumbUrl);
-
-  storiesContainer.appendChild(content);
-  content.appendChild(img);
-
-  content.addEventListener('click', () => {
-    currentIndex = i;
-    storyFull.classList.add('active');
-    storyFullImage.setAttribute('src', s.imageUrl);
-
-    if (!s.title) {
-      storyFullTitle.style.display = 'none';
-    } else {
-      storyFullTitle.style.display = 'block';
-      storyFullTitle.innerHTML = s.title;
-    }
-
-    clearInterval(timer);
-    timer = setInterval(nextStory, 5000);
+$(document).ready(function () {
+  $('#news-slider').owlCarousel({
+    items: 2,
+    itemsDesktop: [1199, 2],
+    itemsMobile: [600, 1],
+    pagination: true,
+    autoPlay: true,
   });
-});
 
-closeBtn.addEventListener('click', () => {
-  storyFull.classList.remove('active');
-});
+  $('#news-slider2').owlCarousel({
+    items: 3,
+    itemsDesktop: [1199, 2],
+    itemsDesktopSmall: [980, 2],
+    itemsMobile: [600, 1],
+    pagination: false,
+    navigationText: false,
+    autoPlay: true,
+  });
 
-leftArrow.addEventListener('click', () => {
-  if (currentIndex > 0) {
-    currentIndex -= 1;
+  $('#news-slider3').owlCarousel({
+    items: 3,
+    itemsDesktop: [1199, 2],
+    itemsDesktopSmall: [1000, 2],
+    itemsMobile: [700, 1],
+    pagination: false,
+    navigationText: false,
+    autoPlay: true,
+  });
 
-    storyFullImage.setAttribute('src', allStories[currentIndex].imageUrl);
+  $('#news-slider4').owlCarousel({
+    items: 3,
+    itemsDesktop: [1199, 3],
+    itemsDesktopSmall: [1000, 2],
+    itemsMobile: [600, 1],
+    pagination: false,
+    navigationText: false,
+    autoPlay: true,
+  });
 
-    if (!allStories[currentIndex].title) {
-      storyFullTitle.style.display = 'none';
-    } else {
-      storyFullTitle.style.display = 'block';
-      storyFullTitle.innerHTML = allStories[currentIndex].title;
-    }
+  $('#news-slider5').owlCarousel({
+    items: 3,
+    itemsDesktop: [1199, 3],
+    itemsDesktopSmall: [1000, 2],
+    itemsMobile: [650, 1],
+    pagination: false,
+    navigationText: false,
+    autoPlay: true,
+  });
 
-    clearInterval(timer);
-    timer = setInterval(nextStory, 5000);
-  }
-});
+  $('#news-slider6').owlCarousel({
+    items: 3,
+    itemsDesktop: [1199, 3],
+    itemsDesktopSmall: [980, 2],
+    itemsMobile: [600, 1],
+    pagination: false,
+    navigationText: false,
+  });
 
-const nextStory = () => {
-  if (currentIndex < allStories.length - 1) {
-    currentIndex += 1;
+  $('#news-slider7').owlCarousel({
+    items: 3,
+    itemsDesktop: [1199, 3],
+    itemsDesktopSmall: [1000, 2],
+    itemsMobile: [650, 1],
+    pagination: false,
+    autoPlay: true,
+  });
 
-    storyFullImage.setAttribute('src', allStories[currentIndex].imageUrl);
+  $('#news-slider8').owlCarousel({
+    items: 3,
+    itemsDesktop: [1199, 3],
+    itemsDesktopSmall: [980, 2],
+    itemsMobile: [600, 1],
+    autoPlay: true,
+  });
 
-    if (!allStories[currentIndex].title) {
-      storyFullTitle.style.display = 'none';
-    } else {
-      storyFullTitle.style.display = 'block';
-      storyFullTitle.innerHTML = allStories[currentIndex].title;
-    }
-  }
-};
+  $('#news-slider9').owlCarousel({
+    items: 3,
+    itemsDesktop: [1199, 2],
+    itemsDesktopSmall: [980, 2],
+    itemsTablet: [650, 1],
+    pagination: false,
+    navigation: true,
+    navigationText: ['', ''],
+  });
 
-rightArrow.addEventListener('click', () => {
-  nextStory();
-  clearInterval(timer);
-  timer = setInterval(nextStory, 5000);
+  $('#news-slider10').owlCarousel({
+    items: 4,
+    itemsDesktop: [1199, 3],
+    itemsDesktopSmall: [980, 2],
+    itemsMobile: [600, 1],
+    navigation: true,
+    navigationText: ['', ''],
+    pagination: true,
+    autoPlay: true,
+  });
+
+  $('#news-slider11').owlCarousel({
+    items: 4,
+    itemsDesktop: [1199, 3],
+    itemsDesktopSmall: [980, 2],
+    itemsMobile: [600, 1],
+    pagination: true,
+    autoPlay: true,
+  });
+
+  $('#news-slider12').owlCarousel({
+    items: 2,
+    itemsDesktop: [1199, 2],
+    itemsDesktopSmall: [980, 1],
+    itemsTablet: [600, 1],
+    itemsMobile: [550, 1],
+    pagination: true,
+    autoPlay: true,
+  });
+
+  $('#news-slider13').owlCarousel({
+    navigation: false,
+    pagination: true,
+    items: 3,
+    itemsDesktop: [1199, 3],
+    itemsDesktopSmall: [980, 2],
+    itemsMobile: [600, 1],
+    navigationText: ['', ''],
+  });
+
+  $('#news-slider14').owlCarousel({
+    items: 4,
+    itemsDesktop: [1199, 3],
+    itemsDesktopSmall: [980, 2],
+    itemsMobile: [550, 1],
+    pagination: false,
+    autoPlay: true,
+  });
 });
